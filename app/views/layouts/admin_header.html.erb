@@ -12,15 +12,18 @@
 
   <body>
     <header>
-      <% if customer_signed_in? %>
-       <li>
-        <%= link_to "マイページ", new_admin_session_path %>
-       </li>
+      <% if admin_signed_in? %>
        <li>
         <%= link_to "商品一覧" %>
        </li>
        <li>
-         <%= link_to "カート", new_customer_registration_path %>
+        <%= link_to "会員一覧", new_admin_session_path %>
+       </li>
+       <li>
+         <%= link_to "注文履歴一覧", new_customer_registration_path %>
+       </li>
+       <li>
+         <%= link_to "ジャンル一覧", admin_session_path %>
        </li>
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path,method: :delete %>
