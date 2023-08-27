@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_23_100706) do
+ActiveRecord::Schema.define(version: 2023_08_27_092747) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2023_08_23_100706) do
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
-    t.boolean "is_deleted", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
