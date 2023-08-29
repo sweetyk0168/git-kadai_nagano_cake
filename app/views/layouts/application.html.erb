@@ -14,7 +14,7 @@
     <header>
       <% if customer_signed_in? %>
        <li>
-        <%= link_to "マイページ", customers_mypage_path %>
+        <%= link_to "マイページ", customer_path(current_customer.id) %>
        </li>
        <li>
         <%= link_to "商品一覧" %>
