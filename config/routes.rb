@@ -15,9 +15,14 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get 'home/about' => 'public/homes#about', as: 'about'
+  get 'customers/confirm_withdraw' => 'public/customers#confirm_withdraw'
+  patch 'customers/withdraw' => 'public/customers#withdraw'
+  get 'customers/information/edit' => 'public/customers#edit'
+  patch '/customers/information' => 'public/customers#update'
+
   #get 'customers/mypage' => 'customers#show'
   scope module: :public do
-    resources :customers,only: [:show, :edit, :update]
+    resource :customers,only: [:show]
   end
 
   namespace :admin do

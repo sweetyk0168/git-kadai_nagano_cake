@@ -1,6 +1,6 @@
 <h2>会員情報編集</h2>
-<%= form_for(resource, as: resource_name, url: edit_customer_registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<%= form_with model: @customer, url: customers_information_path, local: true do |f| %>
+  <%= render "public/shared/error_messages", resource: f.object %>
   <label>氏名</label>
   <div class="field">
     <%= f.text_field :last_name, autofocus:true, autocomplete: "last_name" %>
@@ -28,9 +28,9 @@
     <div class="field">
     <%= f.text_field :email, autofocus:true, autocomplete: "email" %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit "編集内容を保存" %>
   </div>
-  
+  <%= link_to "退会する", customers_confirm_withdraw_path %>
 <% end %>
