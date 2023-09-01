@@ -9,8 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
 
       #チャレンジ機能のカラム
       t.integer :genre_id, null:false
-      t.boolean :is_active, null:false
-
+      t.boolean :is_active, default: false ,null:false
       t.timestamps
     end
   end
