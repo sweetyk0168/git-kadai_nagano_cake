@@ -1,4 +1,7 @@
 <h2>商品一覧</h2>
+<%= link_to new_admin_item_path do %>
+  <button type="button" class="btn btn-success btn-success btn-circle btn-lg">+</button>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -10,12 +13,15 @@
     </tr>
   </thead>
   <tbody>
+    <% @items.each do |item| %>
     <tr>
-      <td>
-        <% @items.each do |item| %>
-         
-        <% end %>      
-      </td>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+      <td><%= item_status_name(item) %></td>
     </tr>
+   <% end %>
   </tbody>
 </table>
+<%= paginate @items %>

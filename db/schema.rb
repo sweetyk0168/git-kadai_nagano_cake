@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(version: 2023_09_02_073530) do
     t.text "introduction", null: false
     t.integer "price", null: false
     t.integer "genre_id", null: false
-    t.boolean "is_active", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_active", default: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
