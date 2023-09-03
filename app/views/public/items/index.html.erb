@@ -1,0 +1,9 @@
+<h2>商品一覧</h2>（全<%= @quantity %>件）
+<% @items.each do |item| %>
+<div>
+  <%= image_tag item.get_image(100,100) %>
+  <p><%= item.name %></p>
+  <p><%= item.price %></p>
+</div>
+<% end %>
+<%= paginate @items %>

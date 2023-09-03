@@ -3,7 +3,7 @@ module Admin::ItemsHelper
     if item.is_active
       '販売中'
     else
-      '販売停止'
+      '販売停止中'
     end
   end
 end

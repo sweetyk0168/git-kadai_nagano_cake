@@ -22,12 +22,13 @@ Rails.application.routes.draw do
 
   #get 'customers/mypage' => 'customers#show'
   scope module: :public do
-    resource :customers,only: [:show]
+    resource :customers, only: [:show]
+    resources :items, only: [:index, :show, :new]
   end
 
   namespace :admin do
-    resources :genres,only: [:index,:create,:edit,:update]
-    resources :items,only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index,:create,:edit,:update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :get_image, only: [:new, :index, :show]
   end
 
