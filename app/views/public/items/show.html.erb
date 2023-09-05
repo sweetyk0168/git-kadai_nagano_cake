@@ -1,0 +1,6 @@
+<%= image_tag @item.get_image(100,100) %>
+<%= @item.name %>
+<%= @item.introduction %>
+<%= @item.add_tax_sales_price.to_s(:dalimited)  %>（税込）
+
+<%#= f.submit 'カートに入れる' %>
