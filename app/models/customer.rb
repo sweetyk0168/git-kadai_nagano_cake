@@ -16,6 +16,6 @@ class Customer < ApplicationRecord
   #enum設定
   #enum is_deleted: { 有効: 0, 無効: 1 }
   def active_for_authentication?
-    super && (self.is_deleted == flase)
+    super && (self.is_deleted == false)
   end
 end
