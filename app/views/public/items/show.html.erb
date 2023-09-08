@@ -1,6 +1,15 @@
 <%= image_tag @item.get_image(100,100) %>
 <%= @item.name %>
 <%= @item.introduction %>
-<%= @item.add_tax_sales_price.to_s(:dalimited)  %>（税込）
-
-<%#= f.submit 'カートに入れる' %>
+<% if @item.is_active == true %>
+    <%= @item.add_tax_sales_price.to_s(:dalimited)  %>（税込）
+<% else %>
+    soldout
+<% end %>
+<% if @item.is_active == true %>
+    <%= form_for(@cart_item, url: cart_items_path) do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :amount, {１:1, ２:2, ３:3, ４:4, ５:5, ６:6, ７:7, ８:8, ９:9, １０:10}, { inclue_blank: '個数選択'} %>
+        <%= f.submit 'カートに入れる' %>
+    <% end %>
+<% end %>

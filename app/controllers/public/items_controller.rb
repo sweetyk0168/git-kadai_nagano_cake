@@ -6,6 +6,6 @@ class Public::ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
-    #@post_images = @item.post_images.page(params[:page])
+    @cart_item = CartItem.new
   end
 end
