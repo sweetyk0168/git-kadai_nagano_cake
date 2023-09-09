@@ -17,12 +17,12 @@ class Public::CartItemsController < ApplicationController
     else
       #新しいカートの作成
       @cart_item = CartItem.new(cart_item_params)
-        #誰のカートか紐づけ
-        @cart_item.customer_id = current_customer.id
-        #情報を保存できるか？
-        @cart_item.save
-        #カートページ遷移
-        redirect_to cart_items_path
+      #誰のカートか紐づけ
+      @cart_item.customer_id = current_customer.id
+      #情報を保存できるか？
+      @cart_item.save
+      #カートページ遷移
+      redirect_to cart_items_path
     end
   end
 

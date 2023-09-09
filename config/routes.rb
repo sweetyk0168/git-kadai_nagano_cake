@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'cart_items/index'
-  end
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    get 'homes/top'
   end
   # devise_for :customers
   # 顧客用
@@ -44,6 +39,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :get_image, only: [:new, :index, :show]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only:[:index, :show, :update]
+    resources :order_details, only: [:update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

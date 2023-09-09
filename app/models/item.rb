@@ -1,7 +1,9 @@
 class Item < ApplicationRecord
-  belongs_to :genre
+  #has_many :order_details, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-  
+  belongs_to :genre, optional: true
+  has_many :orders
+
   validates :name, presence: true
   validates :introduction, presence:true
   validates :price, presence:true
@@ -13,7 +15,7 @@ class Item < ApplicationRecord
   def add_tax_sales_price
     (self.price * 1.10).round
   end
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

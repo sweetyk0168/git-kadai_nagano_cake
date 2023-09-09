@@ -1,5 +1,7 @@
 class Admin::ItemsController < ApplicationController
   layout 'admin_header'
+  before_action :authenticate_admin!
+  
   def index
     @items = Item.page(params[:page]).per(10)
   end
@@ -28,7 +30,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_item_path(@item.id)
+      redirect_to admin_item_path(@item)
     else
       render "edit"
     end

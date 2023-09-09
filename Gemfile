@@ -59,3 +59,4 @@ gem 'devise'
 gem 'rename'
 
 gem 'kaminari','~> 1.2.1'
+gem "enum_help"
