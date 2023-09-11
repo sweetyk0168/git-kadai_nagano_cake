@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order = Order.new
     #@addresses = current_customer.addresses
@@ -31,7 +33,12 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = current_customer.orders.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
+    
+    #カートを空にするため、ordered_itemに保存する
+    current_customer.cart_items.each do |cart_item|
+    end
   end
 
   def index
