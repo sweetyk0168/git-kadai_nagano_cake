@@ -1,26 +1,22 @@
 <h2>注文履歴一覧</h2>
 <table>
-  <thead>
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
       <th>注文個数</th>
       <th>注文ステータス</th>
     </tr>
-    <tbody>
+    <!--array = []-->
       <% @orders.each do |order| %>
         <tr>
-          <td>
-            <%= link_to admin_order_path(order) do %>
-              order.created_at.strftime('%Y/%m/%d %H:%M:%S')
-            <% end %>
+          <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+          <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+          <td><%#= order.order_details.amount %>
+               <%#= array << order.order_details.amount %>
+               <%#= array.sum %>
           </td>
-          <td><%= order.customer %></td>
-          <td><%= order.amount %></td>
           <td><%= order.order_status %></td>
         </tr>
       <% end %>
-    </tbody>
-  </thead>
 </table>
-<%= paginate(@orders) %>
+<%#= paginate @orders %>

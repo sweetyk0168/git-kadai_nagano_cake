@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
-  #has_many :order_details, dependent: :destroy
+  has_many :order_details
+  has_many :orders, through: :order_details
   has_many :cart_items, dependent: :destroy
-  belongs_to :genre, optional: true
+  belongs_to :genre
   has_many :orders
 
   validates :name, presence: true

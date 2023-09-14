@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
   namespace :admin do
     get 'homes/top'
   end
@@ -38,6 +42,7 @@ Rails.application.routes.draw do
         get 'complete'
       end
     end
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 
   namespace :admin do

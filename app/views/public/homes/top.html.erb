@@ -4,8 +4,15 @@
 会員でない方も商品の閲覧はできますが、<br>
 購入には会員登録が必要になります。</p>
 
-<h2>新着商品</h2>
-<p>商品名</p>
-<p>商品名</p>
-<p>商品名</p>
-<%=link_to '全ての商品を見る' %>
+<% @items.each do |item| %>
+  <%= image_tag item.get_image(100,100) %><br>
+  <p><%= item.name %></p><br>
+  <!-- 売切れの場合、値段を表示しない -->
+  <% if item.is_active == true %>
+    <p>\<%= item.price %>
+    販売中</p>
+  <% else %>
+  　売切れ
+  <% end %>
+<% end %>
+<%=link_to '全ての商品を見る', items_path %>
