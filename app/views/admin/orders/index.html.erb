@@ -8,10 +8,16 @@
     </tr>
     <!--array = []-->
       <% @orders.each do |order| %>
+      <% @total_amount = 0 %>
         <tr>
-          <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
+          <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order.id) %></td>
           <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-          <td><%#= order.order_details.amount %>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+              <% @total_amount += order_detail.amount %>
+            <% end %>
+            <%= @total_amount %>
+              <%#= order.order_details.amount %>
                <%#= array << order.order_details.amount %>
                <%#= array.sum %>
           </td>
@@ -19,4 +25,4 @@
         </tr>
       <% end %>
 </table>
-<%#= paginate @orders %>
+<%= paginate @orders %>

@@ -1,15 +1,15 @@
 <h2>注文履歴詳細</h2>
 <table>
   <thead>
-    <tr><th>購入者</th><td><%= @order.name %></td></tr>
+    <tr><th>購入者</th><td><%= @order.customer.last_name %><%= @order.customer.first_name %></td></tr>
     <tr><th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td></tr>
-    <tr><th>配送先</th><td><%= @order.postcode %><% @order.address %><% @order.name %></td></tr>
+    <tr><th>配送先</th><td><%= @order.postcode %><%= @order.address %><%= @order.customer.last_name %><%= @order.customer.first_name %></td></tr>
     <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
     <tr>
       <th>注文ステータス</th>
       <td>
-        <%= form_for(@order, url: admin_orders_path, method: :patch, local:true) do |f| %>
-            <%= f.select :status, Order.order_statuses.key %>
+        <%= form_with model: @order, url: admin_orders_path, local:true do |f| %>
+            <%= f.select :order_status, ["入金待ち", "入金確認", "製作中", "発送準備中", "発送済み"] %>
             <%= f.submit '更新' %>
         <% end %>
       </td>
@@ -27,16 +27,20 @@
     </tr>
   </thead>
   <tbody>
-    <% @order.order_details.each do |order_detail| %>
+    <% total = 0 %>
+    <% @order_details.each do |order_detail| %>
       <tr>
         <td><%= order_detail.item.name %></td>
-        <td><%= order_detail.item.add_tax_sales_price.to_s(:dalimited) %></td>
+        <td><%#= order_detail.item.add_tax_sales_price.to_s(:dalimited) %></td>
+        <td><%= (order_detail.item.add_tax_sales_price*1.1).to_i %></td>
         <td><%= order_detail.amount %></td>
-        <td><%= sub_price(order_detail %></td>
+        <td><%#= (order_detail.item.add_tax_sales_price * order_detail.amount).to_s(:dalimited) %></td>
+        <td><%= ((order_detail.item.add_tax_sales_price * order_detail.amount)*1.1).to_i %>
+            <% total += ((order_detail.item.add_tax_sales_price*order_detail.amount)*1.1).to_i %>
+        </td>
         <td>
-          <%= form_for(order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true) do |f| %>
-            <% order.order_statuses = {"入金待ち": 1, "入金確認":2, "製作中": 3, "発送準備中":4, "発送済み": 5} %>
-            <%= f.select :production_status, OrderDetail.production_status.keys %>
+          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
+            <%= f.select :production_status, ["着手負荷", "製作待ち", "製作中", "製作完了"] %>
             <%= f.submit "更新" %>
           <% end %>
         </td>
@@ -46,8 +50,8 @@
 </table>
 <table>
   <thead>
-    <tr><th>商品合計</th><td><%= total_price(order.order_detail) %></td></tr>
-    <tr><th>送料</th><td><%= order.postage %></td></tr>
-    <tr><th>請求金額合計</th><td><%= total_price(@order.order_details) + @order.postage %></td></tr>
+    <tr><th>商品合計</th><td><%= total %></td></tr>
+    <tr><th>送料</th><td><%= @order.postage %></td></tr>
+    <tr><th>請求金額合計</th><td><%= total + @order.postage %></td></tr>
   </thead>
 </table>

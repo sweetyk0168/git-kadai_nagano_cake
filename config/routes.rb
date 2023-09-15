@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     get 'addresses/index'
     get 'addresses/edit'
   end
-  namespace :admin do
-    get 'homes/top'
-  end
+  #namespace :admin do
+  #  get 'homes/top'
+  #end
   # devise_for :customers
   # 顧客用
 # URL /customers/sign_in ...
@@ -27,6 +27,16 @@ Rails.application.routes.draw do
   get 'customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
 
+namespace :admin do
+    get 'homes/top' => "homes#top"
+    resources :genres, only: [:index,:create,:edit,:update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :get_image, only: [:new, :index, :show]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_details, only: [:update]
+end
+
   #get 'customers/mypage' => 'customers#show'
   scope module: :public do
     resource :customers, only: [:show]
@@ -44,15 +54,5 @@ Rails.application.routes.draw do
     end
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
   end
-
-  namespace :admin do
-    resources :genres, only: [:index,:create,:edit,:update]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :get_image, only: [:new, :index, :show]
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only:[:index, :show, :update]
-    resources :order_details, only: [:update]
-  end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
