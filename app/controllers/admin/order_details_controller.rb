@@ -9,7 +9,7 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail.update(order_detail_params)
 
     #注文ステータスを「製作中」
-    if @order_detail.where(production_status: "製作中").count >= 1
+    if @order_details.where(production_status: "製作中").count >= 1
       @order.order_status = "製作中"
       @order.save
     end

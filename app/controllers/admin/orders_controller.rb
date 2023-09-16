@@ -22,7 +22,7 @@ class Admin::OrdersController < ApplicationController
         order_detail.save
       end
     end
-    redirect_to admin_order_path(@order_detail.id)
+    redirect_to admin_orders_path
   end
 
   private

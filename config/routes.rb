@@ -33,7 +33,8 @@ namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :get_image, only: [:new, :index, :show]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:index,:show, :update]
+    #patch 'orders/index' => "orders#index"
     resources :order_details, only: [:update]
 end
 
