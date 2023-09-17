@@ -17,10 +17,11 @@ class Admin::OrdersController < ApplicationController
     @order_details = @order.order_details
 
     if @order.order_status == "入金確認"
-      @order_details.each do |order_detail|
+        @order_details.each do |order_detail|
         order_detail.production_status = "製作待ち"
         order_detail.save
       end
+      #@order.order_details.update_all(production_status: 1)
     end
     redirect_to admin_orders_path
   end

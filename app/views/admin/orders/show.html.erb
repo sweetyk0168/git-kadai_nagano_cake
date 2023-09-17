@@ -8,7 +8,7 @@
     <tr>
       <th>注文ステータス</th>
       <td>
-        <%= form_with model: @order, url: admin_orders_path, local:true do |f| %>
+        <%= form_with model: @order, url: admin_order_path(@order.id), local:true do |f| %>
             <%= f.select :order_status, ["入金待ち", "入金確認", "製作中", "発送準備中", "発送済み"] %>
             <%= f.submit '更新' %>
         <% end %>
