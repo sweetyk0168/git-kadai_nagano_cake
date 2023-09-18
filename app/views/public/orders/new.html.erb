@@ -14,8 +14,8 @@
   〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
   <%= current_customer.last_name %><%= current_customer.first_name %><br>
 
-  <%= f.radio_button :my_address, "2" %>
-  <%= f.label :"登録住所からの選択" %><br>
+  <%#= f.radio_button :my_address, "2" %>
+  <%#= f.label :"登録住所からの選択" %><br>
   <%#= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
     <%#= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
   <%# end %>

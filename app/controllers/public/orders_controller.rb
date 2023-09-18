@@ -20,11 +20,11 @@ class Public::OrdersController < ApplicationController
       @order.postcode = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:my_address] == "2"
-     ship = Address.find(params[:order][:customer_id])
-      @order.postal_code = ship.postal_code
-      @order.address = ship.address
-      @order.name = ship.name
+    #elsif params[:order][:my_address] == "2"
+     #ship = Address.find(params[:order][:customer_id])
+      #@order.postal_code = ship.postal_code
+      #@order.address = ship.address
+      #@order.name = ship.name
     elsif params[:order][:my_address] == "3"
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
@@ -61,9 +61,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all.page(params[:page]).per(6).order('created_at DESC')
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   private
