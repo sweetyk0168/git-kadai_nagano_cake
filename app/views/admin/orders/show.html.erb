@@ -1,4 +1,7 @@
-<h2>注文履歴詳細</h2>
+<div class="container height">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>注文履歴詳細</h2>
 <table>
   <thead>
     <tr><th>購入者</th><td><%= @order.customer.last_name %><%= @order.customer.first_name %></td></tr>
@@ -16,7 +19,10 @@
     </tr>
   </thead>
 </table>
-<table>
+    </div>
+  <div class="row">
+    <div class="col-xs-9">
+      <table>
   <thead>
     <tr>
       <th>商品名</th>
@@ -48,6 +54,9 @@
     <% end %>
   </tbody>
 </table>
+    </div>
+  </div>
+
 <table>
   <thead>
     <tr><th>商品合計</th><td><%= total %></td></tr>
@@ -55,3 +64,5 @@
     <tr><th>請求金額合計</th><td><%= total + @order.postage %></td></tr>
   </thead>
 </table>
+  </div>
+</div>

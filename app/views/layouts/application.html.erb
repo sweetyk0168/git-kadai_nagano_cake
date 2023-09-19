@@ -12,33 +12,41 @@
 
   <body>
     <header>
-      <% if customer_signed_in? %>
-       <li>
-        <%= link_to "マイページ", customers_path %>
-       </li>
-       <li>
-        <%= link_to "商品一覧", items_path %>
-       </li>
-       <li>
-         <%= link_to "カート", cart_items_path %>
-       </li>
+      <div class ="container">
+        <nav class="nav navbar-nav navbar-left" >
+
+        </nav>
+        <ul class="nav-item nav navbar-nav navbar-right">
+          <% if customer_signed_in? %>
+         <li>ようこそ、<%= current_customer.last_name %>さん！</li><br>
+         <li>
+            <%= link_to "マイページ", customers_path %>
+         </li>
+         <li>
+            <%= link_to "商品一覧", items_path %>
+         </li>
+         <li>
+            <%= link_to "カート", cart_items_path %>
+         </li>
+         <li>
+            <%= link_to "ログアウト", destroy_customer_session_path,method: :delete %>
+         </li>
+        <% else %>
         <li>
-          <%= link_to "ログアウト", destroy_customer_session_path,method: :delete %>
+            <%= link_to "About", about_path %>
         </li>
-      <% else %>
-       <li>
-        <%= link_to "About", about_path %>
-       </li>
-       <li>
-        <%= link_to "商品一覧", items_path %>
-       </li>
-       <li>
-         <%= link_to "新規登録", new_customer_registration_path %>
-       </li>
-       <li>
-         <%= link_to "ログイン", customer_session_path %>
-       </li>
-      <% end %>
+        <li>
+            <%= link_to "商品一覧", items_path %>
+        </li>
+        <li>
+            <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
+        <li>
+            <%= link_to "ログイン", customer_session_path %>
+        </li>
+        <% end %>
+        </ul>
+      </div>
     </header>
     <%= yield %>
   </body>

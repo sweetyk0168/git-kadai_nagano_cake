@@ -1,10 +1,14 @@
-<%= flash[:notice] %>
-<p>ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。</p>
-
+<div class="container height">
+  <strong><%= flash[:notice] %></strong>
+  <div class="row">
+    <div class="col-xs-9">
+      <p class="font-text">ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。</p>
+<div id ="multiple-items">
 <% @items.each do |item| %>
+  <div class="recommendation-items">
   <%= image_tag item.get_image(100,100) %><br>
   <p><%= item.name %></p><br>
   <!-- 売切れの場合、値段を表示しない -->
@@ -14,5 +18,15 @@
   <% else %>
   　売切れ
   <% end %>
+  </div>
 <% end %>
-<%=link_to '全ての商品を見る', items_path %>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-9"></div>
+      <div ="col-xs-2">
+        <%=link_to '全ての商品を見る', items_path %>
+      </div>
+    </div>
+  </div>
+</div>

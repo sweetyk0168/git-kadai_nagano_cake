@@ -1,8 +1,11 @@
-<h2>商品一覧</h2>
-<%= link_to new_admin_item_path do %>
-  <button type="button" class="btn btn-success btn-success btn-circle btn-lg">+</button>
-<% end %>
-<table>
+<div class="container height">
+  <h3>商品一覧</h3>
+  <div class="text-right index-new">
+    <%= link_to new_admin_item_path do %>
+      <button type="button" class="btn-outline-dark btn-circle btn-lg">+</button>
+    <% end %>
+  </div>
+  <table class="table-hover">
   <thead>
     <tr>
       <th>商品ID</th>
@@ -25,3 +28,4 @@
   </tbody>
 </table>
 <%= paginate @items %>
+</div>

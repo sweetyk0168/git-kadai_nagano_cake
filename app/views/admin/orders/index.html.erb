@@ -1,5 +1,6 @@
-<h2>注文履歴一覧</h2>
-<table>
+<div class="container height">
+  <h2>注文履歴一覧</h2>
+<table class="table table-hover">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -26,3 +27,4 @@
       <% end %>
 </table>
 <%= paginate @orders %>
+</div>

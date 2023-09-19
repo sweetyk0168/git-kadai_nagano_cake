@@ -1,15 +1,31 @@
-<%= image_tag @item.get_image(100,100) %>
-<%= @item.name %>
-<%= @item.introduction %>
-<% if @item.is_active == true %>
-    <%= @item.add_tax_sales_price.to_s(:dalimited)  %>（税込）
-<% else %>
-    soldout
-<% end %>
-<% if @item.is_active == true %>
-    <%= form_for(@cart_item, url: cart_items_path) do |f| %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :amount, {１:1, ２:2, ３:3, ４:4, ５:5, ６:6, ７:7, ８:8, ９:9, １０:10}, { inclue_blank: '個数選択'} %>
-        <%= f.submit 'カートに入れる' %>
-    <% end %>
-<% end %>
+<div class="container height">
+  <div class="row">
+      <div class="col-xs-9">
+         <div class="row" style="margin-top: 50px";>
+            <%= image_tag @item.get_image(100,100) %>
+         </div>
+         <div style="width:400px; height:300px; float:left;">
+            <%= @item.name %>
+            <%= @item.introduction %>
+            <p class="price">￥
+            <% if @item.is_active == true %>
+                <%= @item.add_tax_sales_price.to_s(:dalimited)  %>（税込）
+            <% else %>
+                soldout
+            <% end %>
+            </p>
+         </div>
+        </div>
+        <div class="col-xs-5">
+            <string class="error"><%= notice %></string>
+            <% if @item.is_active == true %>
+                <%= form_for(@cart_item, url: cart_items_path) do |f| %>
+                    <%= f.hidden_field :item_id, value: @item.id %>
+                    <%= f.number_field :amount, placeholder: "個数選択", min: 1, max: 20 %>
+                    <%= f.submit 'カートに入れる', class: 'btn btn-primary' %>
+                <% end %>
+            <% end %>
+        </div>
+  </div>
+</div>
+

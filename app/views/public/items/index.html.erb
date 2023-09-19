@@ -1,12 +1,24 @@
-<h2>商品一覧</h2>（全<%= @quantity %>件）
-<% @items.each do |item| %>
-<div>
-  <%= link_to item_path(item.id) do %>
-      <%= image_tag item.get_image(100,100) %>
-  <% end %>
-
-  <p><%= item.name %></p>
-  <p><%= item.price %></p>
+<div class="container height">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-9">
+      <h2><i class="fas fa-cookie-bite"></i>商品一覧</h2>（全<%= @quantity %>件）
+      <div class="row">
+        <% @items.each do |item| %>
+        <div>
+          <%= link_to item_path(item.id) do %>
+            <div class="box">
+              <%= image_tag item.get_image(100,100) %>
+              <% end %>
+              <p><%= item.name %></p>
+              <p><%= item.price %></p>
+            </div>
+          <% end %>
+          </div>
+      </div>
+      <div class="col-xs-6 col-xs-offset-4">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
-<%= paginate @items %>

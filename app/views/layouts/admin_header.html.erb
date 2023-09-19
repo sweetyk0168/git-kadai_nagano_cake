@@ -12,36 +12,42 @@
 
   <body>
     <header>
-      <% if admin_signed_in? %>
-       <li>
-        <%= link_to "商品一覧", admin_items_path %>
-       </li>
-       <li>
-        <%= link_to "会員一覧", admin_customers_path %>
-       </li>
-       <li>
-         <%= link_to "注文履歴一覧", admin_orders_path %>
-       </li>
-       <li>
-         <%= link_to "ジャンル一覧", admin_genres_path %>
-       </li>
-        <li>
+      <div class = "container">
+         <nav class="nav navbar-nav navbar-left" >
+         </nav>
+         <ul class="nav-item nav navbar-nav navbar-right">
+        <% if admin_signed_in? %>
+         <li>
+          <%= link_to "商品一覧", admin_items_path %>
+         </li>
+         <li>
+          <%= link_to "会員一覧", admin_customers_path %>
+         </li>
+         <li>
+           <%= link_to "注文履歴一覧", admin_orders_path %>
+         </li>
+         <li>
+           <%= link_to "ジャンル一覧", admin_genres_path %>
+         </li>
+         <li>
           <%= link_to "ログアウト", destroy_admin_session_path,method: :delete %>
-        </li>
-      <% else %>
-       <li>
-        <%= link_to "About", new_admin_session_path %>
-       </li>
-       <li>
-        <%= link_to "商品一覧", admin_items_path %>
-       </li>
-       <li>
-         <%= link_to "新規登録", new_customer_registration_path %>
-       </li>
-       <li>
-         <%= link_to "ログイン", admin_session_path %>
-       </li>
-      <% end %>
+         </li>
+        <% else %>
+         <li>
+          <%= link_to "About", new_admin_session_path %>
+         </li>
+         <li>
+          <%= link_to "商品一覧", admin_items_path %>
+         </li>
+         <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+         </li>
+         <li>
+          <%= link_to "ログイン", admin_session_path %>
+         </li>
+        <% end %>
+        </ul>
+      </div>
     </header>
     <%= yield %>
   </body>

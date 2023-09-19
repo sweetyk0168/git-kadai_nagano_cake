@@ -1,0 +1,91 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#container {
+  height: 450px;
+  width: 550px;
+}
+
+.navbar-nav li a {
+  font-weight: bold;
+  padding-top: 15px;
+  text-decoration: none;
+}
+
+li {
+  display: inline-block;
+  list-style: none;
+}
+
+.navbar {
+  border-radius :0px;
+}
+
+.navbar-nav li {
+  font-size :15px;
+  padding-top: 15px;
+}
+
+.nav-item {
+  font-size :15px;
+}
+
+.takasa {
+  min-height: 74vh;
+}
+
+strong {
+  font-size: 20px;
+}
+
+#multiple-items {
+  margin-left: 260px;
+}
+
+.recommendation-items {
+  float: left;
+  margin-right: 50px;
+}
+
+p {
+  line-height: 240%;
+}
+
+h2 {
+  position: relative;
+  padding: 0.5em;
+  width: 45%;
+  text-align: center;
+}
+
+.box {
+  float:left;
+  margin-right: 20px;
+}
+
+.customers_field {
+  margin-bottom: 20px;
+}
+
+.cart_continue_to_order {
+  text-align: center;
+}

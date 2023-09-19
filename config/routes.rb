@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'home/about' => 'public/homes#about', as: 'about'
   get 'customers/confirm_withdraw' => 'public/customers#confirm_withdraw'
-  patch 'customers/withdraw' => 'public/customers#withdraw'
+  patch 'customers/confirm_withdraw' => 'public/customers#withdraw'
   get 'customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
 
