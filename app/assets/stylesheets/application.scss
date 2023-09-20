@@ -49,7 +49,7 @@ li {
   font-size :15px;
 }
 
-.takasa {
+.height {
   min-height: 74vh;
 }
 
@@ -88,4 +88,27 @@ h2 {
 
 .cart_continue_to_order {
   text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thead, th,td {
+  padding: 12px;
+ vertical-align: bottom;
+ border-top: 2px solid #dee2e6;
+ border-right: 2px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
+border-left: 2px solid #dee2e6;
+
+
+// td {
+// padding: 12px;
+// vertical-align: top;
+// border-top: 2px solid #dee2e6;
+// border-right: 2px solid #dee2e6;
+// border-bottom: 2px solid #dee2e6;
+// // border-left: 2px solid #dee2e6;
 }

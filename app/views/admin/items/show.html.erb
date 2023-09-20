@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-xs-4">
       <%= image_tag @item.get_image(100,100) %>
+    </div>
       <div class="col-xs-8">
        <label>商品名</label>
        <%= @item.name %>
@@ -13,7 +14,7 @@
      </div>
       <label>ジャンル</label>
       <%= @item.genre.name %><br>
-      <label>税込価格<br>（税抜価格）</label>
+      <label>税込価格（税抜価格）</label>
       <%= @item.add_tax_sales_price.to_s(:dalimited) %> (<%= @item.price %>)円<br>
       <label>販売ステータス</label>
       <% if @item.is_active == true %>
@@ -22,8 +23,7 @@
       　売り切れ
       <% end %><br>
       <div class="text-right">
-        <%= button_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-primary" %>
+        <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-primary" %>
       </div>
-    </div>
   </div>
 </div>

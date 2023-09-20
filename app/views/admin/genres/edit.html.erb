@@ -1,9 +1,15 @@
-<h3>ジャンル編集</h3>
+<div class="container height">
+  <div class="row">
+    <div class="col-xs-9">
+      <h3>ジャンル編集</h3><br>
 
-<%= form_with model: @genre,url: admin_genre_path, method: :patch do |f| %>
-  <table>
-    <td><%= f.label :"ジャンル名" %></td>
-    <td><%= f.text_field :name %></td>
-    <td><%= f.submit '変更を保存' %></td>
-  </table>
-<% end %>
+    <%= form_with model: @genre,url: admin_genre_path, method: :patch do |f| %>
+      <div class="field row">
+        <label>ジャンル名</label>
+        <%= f.text_field :name %>
+        <%= f.submit '変更を保存', class:"btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,45 +1,45 @@
 <div class="container height">
   <h3><%= @customers.last_name %><%= @customers.first_name %>さんの会員詳細</h3>
-<table>
-  <tr>
-    <th>会員ID</th>
-    <td><%= @customers.id %></td>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <td><%= @customers.last_name %><%= @customers.first_name %></td>
-  </tr>
-  <tr>
-    <th>フリガナ</th>
-    <td><%= @customers.last_name_kana %><%= @customers.first_name_kana %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @customers.postal_code %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @customers.address %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @customers.telephone_number %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @customers.email %></td>
-  </tr>
-  <tr>
-    <th>会員ステータス</th>
-    <td>
-      <% if @customers.is_deleted %>
-        無効
-      <% else %>
-        有効
-      <% end %>
-    </td>
-  </tr>
-</table>
-<%= link_to "編集する", edit_admin_customer_path(@customers), class:"btn btn-primary" %>
-<%= link_to "注文履歴一覧",admin_orders_path, class:"btn btn-primary" %>
+  <div class="row">
+    <div class="col-xs-10">
+      <div class="field">
+        <label>会員ID</label>
+        <%= @customers.id %>
+      </div><br>
+      <div class="field">
+        <label>氏名</label>
+        <%= @customers.last_name %><%= @customers.first_name %>
+      </div><br>
+      <div class="field">
+        <label>フリガナ</label>
+        <%= @customers.last_name_kana %><%= @customers.first_name_kana %>
+      </div><br>
+      <div class="field">
+        <label>郵便番号</label>
+        <%= @customers.postal_code %>
+      </div><br>
+      <div class="field">
+        <label>住所</label>
+        <%= @customers.address %>
+      </div><br>
+      <div class="field">
+        <label>電話番号</label>
+        <%= @customers.telephone_number %>
+      </div><br>
+      <div class="field">
+        <label>メールアドレス</label>
+        <%= @customers.email %>
+      </div><br>
+      <div class="field">
+        <label>会員ステータス</label>
+        <% if @customers.is_deleted %>
+          無効
+        <% else %>
+          有効
+        <% end %>
+      </div><br>
+    </div>
+    <%= link_to "編集する", edit_admin_customer_path(@customers), class:"btn btn-primary" %>
+    <%= link_to "注文履歴一覧",admin_orders_path, class:"btn btn-primary" %>
+  </div>
 </div>

@@ -37,10 +37,10 @@
     <% @order_details.each do |order_detail| %>
       <tr>
         <td><%= order_detail.item.name %></td>
-        <td><%#= order_detail.item.add_tax_sales_price.to_s(:dalimited) %></td>
+        <%#= order_detail.item.add_tax_sales_price.to_s(:dalimited) %>
         <td><%= (order_detail.item.add_tax_sales_price*1.1).to_i %></td>
         <td><%= order_detail.amount %></td>
-        <td><%#= (order_detail.item.add_tax_sales_price * order_detail.amount).to_s(:dalimited) %></td>
+        <%#= (order_detail.item.add_tax_sales_price * order_detail.amount).to_s(:dalimited) %>
         <td><%= ((order_detail.item.add_tax_sales_price * order_detail.amount)*1.1).to_i %>
             <% total += ((order_detail.item.add_tax_sales_price*order_detail.amount)*1.1).to_i %>
         </td>

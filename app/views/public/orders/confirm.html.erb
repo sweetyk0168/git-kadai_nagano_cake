@@ -62,7 +62,7 @@
   <p><strong>支払方法</strong>
   <%= @order.payment_method %></p><br>
 <p><strong>お届け先</strong>
-  <%= @order.postcode %><%= @order.address %>
+  <%= @order.postcode %><%= @order.address %><br>
   <%= @order.name %></p><br>
 
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>

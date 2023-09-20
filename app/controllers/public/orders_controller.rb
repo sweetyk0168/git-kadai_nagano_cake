@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-
+  
   def new
     @order = Order.new
     #@addresses = current_customer.addresses
@@ -29,6 +29,9 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+    else
+      flash[:notice] = "配送先が選択されていません"
+      render 'new'
     end
   end
 
@@ -62,6 +65,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all.page(params[:page]).per(6).order('created_at DESC')
+
   end
 
   def show

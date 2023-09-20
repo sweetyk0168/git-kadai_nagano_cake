@@ -9,7 +9,9 @@
 <div id ="multiple-items">
 <% @items.each do |item| %>
   <div class="recommendation-items">
-  <%= image_tag item.get_image(100,100) %><br>
+    <%= link_to item_path(item.id) do %>
+        <%= image_tag item.get_image(100,100) %><br>
+    <% end %>
   <p><%= item.name %></p><br>
   <!-- 売切れの場合、値段を表示しない -->
   <% if item.is_active == true %>

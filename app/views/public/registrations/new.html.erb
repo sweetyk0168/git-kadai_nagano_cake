@@ -9,7 +9,6 @@
 　<label>（名）</label>
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "道子" %>
   </div><br>
-
 　<label>フリガナ         （セイ）</label>
   <div class="field">
     <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "レイワ" %>
@@ -46,7 +45,7 @@
   </div><br>
 
   <div class="actions">
-    <%= f.submit "新規登録", class: "btn btn-success btn-lg center-block" %>
+    <%= f.submit "新規登録",class: "btn btn-success btn-lg center-block" %>
   </div>
 <% end %>
 <br>

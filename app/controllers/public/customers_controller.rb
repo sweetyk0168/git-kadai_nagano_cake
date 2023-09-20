@@ -1,8 +1,11 @@
 class Public::CustomersController < ApplicationController
   def new
     @customer = Customer.new
+    # if customer.save
+    #   redirect_to customers_path
+    # end
   end
-
+  
   def show
     @customer = current_customer
   end
@@ -22,7 +25,7 @@ class Public::CustomersController < ApplicationController
 
   def confirm_withdraw
   end
-  
+
   def withdraw
     #is_deletedカラムをtrueに変更することにより削除フラグを立てる
     current_customer.update(is_deleted: true)
