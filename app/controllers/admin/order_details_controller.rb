@@ -12,14 +12,15 @@ class Admin::OrderDetailsController < ApplicationController
     if @order_details.where(production_status: "製作中").count >= 1
       @order.order_status = "製作中"
       @order.save
+      redirect_to admin_order_path(@order_detail.order.id)
     end
 
     #注文個数と製作完了になっている個数が同じならば
     if @order.order_details.count == @order_details.where(production_status: "製作完了").count
       @order.order_status = "発送準備中"
       @order.save
+      redirect_to admin_order_path(@order.id)
     end
-    redirect_to admin_order_path(@order_detail.order.id)
   end
 
   private

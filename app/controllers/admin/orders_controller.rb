@@ -20,10 +20,11 @@ class Admin::OrdersController < ApplicationController
         @order_details.each do |order_detail|
         order_detail.production_status = "製作待ち"
         order_detail.save
+
       end
       #@order.order_details.update_all(production_status: 1)
     end
-    redirect_to admin_orders_path
+    redirect_to admin_order_path(@order.id)
   end
 
   private

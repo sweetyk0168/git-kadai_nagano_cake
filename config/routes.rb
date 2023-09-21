@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   patch 'customers/confirm_withdraw' => 'public/customers#withdraw'
   get 'customers/information/edit' => 'public/customers#edit'
   patch '/customers/information' => 'public/customers#update'
+  get 'customers/show' => 'public/customers#show'
 
 namespace :admin do
     get 'homes/top' => "homes#top"

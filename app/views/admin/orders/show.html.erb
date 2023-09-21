@@ -46,7 +46,7 @@
         </td>
         <td>
           <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
-            <%= f.select :production_status, ["着手負荷", "製作待ち", "製作中", "製作完了"] %>
+            <%= f.select :production_status, ["着手不可", "製作待ち", "製作中", "製作完了"] %>
             <%= f.submit "更新" %>
           <% end %>
         </td>
